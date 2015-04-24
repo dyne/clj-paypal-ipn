@@ -53,20 +53,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; stuff for ring/compjure
 
-(defn req->raw-body-str [req]
+(defn req->raw-body-str [req reset?]
   (let [is (:body req)]
     (do
-      (.reset is);TODO fix bug when sending empty post-data i.e. curl -i --data "a"  http://localhost:8080/paypal/ipn
+      ; TODO fix bug when sending empty post-data i.e. curl -i --data "a"  http://localhost:8080/paypal/ipn
+      (when reset? (.reset is))
       (let [raw-body-str (slurp is)]
         (do
-          (.reset is)
+          (when reset? (.reset is))
           raw-body-str)))))
 
+
 (defn make-ipn-handler
-  ([on-success on-failure] (make-ipn-handler on-success on-failure false))
-  ([on-success on-failure sandbox?]
+  ([on-success on-failure] (make-ipn-handler on-success on-failure false true))
+  ([on-success on-failure sandbox?] (make-ipn-handler on-success on-failure sandbox? true))
+  ([on-success on-failure sandbox? reset?]
    (fn [req]
-     (let [body-str (req->raw-body-str req)
+     (let [body-str (req->raw-body-str req reset?)
            ipn-data (parse-paypal-ipn-string body-str)]
        (do
          (.start (Thread. (fn [] (handle-ipn ipn-data on-success on-failure sandbox?))))
