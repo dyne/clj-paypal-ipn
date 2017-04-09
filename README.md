@@ -5,14 +5,14 @@ PayPal IPN handler for Clojure. Use with ring, compojure, or any clojure server 
 
 Add this to your `:dependencies` in project.clj
 ```clojure
-[clojure-paypal-ipn "0.0.1-SNAPSHOT"]
+[org.clojars.dyne/paypal-ipn "0.1.0-SNAPSHOT"]
 ```
 
 Use with ring / compojure
 -------------------------
 ```clojure
 ;Add this to your ns requires
-  (:require [clojure-paypal-ipn.core :refer [make-ipn-handler]])
+  (:require [paypal-ipn.core :refer [make-ipn-handler]])
 
 ...
 
@@ -39,7 +39,7 @@ Use with some other server setup
 --------------------------------
 Add this to your ns requires
 ```clojure
-  (:require [clojure-paypal-ipn.core :refer [parse-paypal-ipn-string handle-ipn]])
+  (:require [paypal-ipn.core :refer [parse-paypal-ipn-string handle-ipn]])
 ```
 Parse the raw contents string of the incoming HTTP POST (`body-str` in this sample)
 ```clojure
@@ -78,6 +78,7 @@ License
 The MIT License (MIT)
 
 Copyright (c) 2014 Small Helm LLC
+Copyright (c) 2017 Dyne.org Foundation
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

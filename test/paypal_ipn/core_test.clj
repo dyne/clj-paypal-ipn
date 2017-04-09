@@ -1,6 +1,6 @@
-(ns clojure-paypal-ipn.core-test
+(ns paypal-ipn.core-test
   (:require [clojure.test :refer :all]
-            [clojure-paypal-ipn.core :refer :all]))
+            [paypal-ipn.core :refer :all]))
 
 (deftest test-parse-paypal-ipn-string
   ;basic test
