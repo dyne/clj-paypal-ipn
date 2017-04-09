@@ -3,6 +3,11 @@ clojure-paypal-ipn
 
 PayPal IPN handler for Clojure. Use with ring, compojure, or any clojure server env.
 
+[![Build Status](https://travis-ci.org/dyne/clj-paypal-ipn.svg?branch=master)](https://travis-ci.org/dyne/clj-paypal-ipn)
+
+[![Clojars Project](https://img.shields.io/clojars/v/org.clojars.dyne/paypal-ipn.svg)](https://clojars.org/org.clojars.dyne/paypal-ipn)
+
+
 Add this to your `:dependencies` in project.clj
 ```clojure
 [org.clojars.dyne/paypal-ipn "0.1.0-SNAPSHOT"]
@@ -78,6 +83,7 @@ License
 The MIT License (MIT)
 
 Copyright (c) 2014 Small Helm LLC
+
 Copyright (c) 2017 Dyne.org Foundation
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
